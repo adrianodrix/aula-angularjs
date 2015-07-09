@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head lang="pt-BR">
+    <meta charset="UTF-8">
+    <title>Trabalhando com Filtros</title>
+</head>
+<body ng-controller="CtrlApp">
+<h1>{{ frase | case: 'upper' }}</h1>
+<button son-click="executa()">Executa</button>
+<son-clic click="executa()">Clic</son-clic>
+Current time is: <span my-current-time="format"></span>
+<div ng-view></div>
+</body>
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular-route.min.js"></script>
+<script type="text/javascript" src="/filters/app.js"></script>
+</html>

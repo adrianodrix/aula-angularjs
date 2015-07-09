@@ -1,0 +1,23 @@
+<!doctype html>
+<html ng-app="MeuModulo">
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
+  </head>
+
+  <body>
+  <div ng-controller="CtrlModulo">
+    Meu Nome é: {{ nome }}
+  </div>
+
+  <script>
+      angular.module('MeuModulo', [])
+              .controller('CtrlModulo', ['$scope', '$http', '$window', function(s, h, w){
+                  s.nome = 'Adriano';
+                  h.get('/brazil_cities_states.json').success(function(response) {
+                      w.alert(response.estados[17].nome);
+                      console.log(response);
+                  });
+              }]);
+  </script>
+  </body>
+</html>

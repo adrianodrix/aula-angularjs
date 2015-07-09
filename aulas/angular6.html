@@ -1,0 +1,27 @@
+<!doctype html>
+<html ng-app="myApp">
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
+  </head>
+
+  <body ng-controller="myCtrl">
+
+  Estado:
+  <select ng-model="selectedState" ng-options="state.nome for state in lista.estados">
+      <option value="">Selecione o Estado</option>
+  </select><br/>
+    Cidade:
+  <select ng-model="selectedCity" ng-options="city for city in selectedState.cidades | filter: busca">
+      <option value="">Selecione a  Cidade</option>
+  </select>Busca: <input type="search" ng-model="busca" /><br/>
+
+  <script>
+      var app = angular.module('myApp', []);
+      app.controller('myCtrl', function($scope, $http) {
+          $http.get('brazil_cities_states.json').success(function(response) {
+              $scope.lista = response;
+          });
+      });
+  </script>
+  </body>
+</html>

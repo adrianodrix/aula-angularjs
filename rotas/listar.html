@@ -1,0 +1,7 @@
+<h2>Listagem</h2>
+<a href="#/pessoa/adicionar">Nova Pessoa</a>
+<ul>
+    <li ng-repeat="pessoa in pessoas">
+        <a href="#/pessoa/{{ $index }}">{{ pessoa.name }} <{{ pessoa.email | lowercase }}></a> <button ng-click="excluir($index)">Excluir</button>
+    </li>
+</ul>

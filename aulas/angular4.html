@@ -1,0 +1,47 @@
+<!doctype html>
+<html ng-app="myApp">
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
+  </head>
+  <body ng-controller="myCtrl">
+  <h1>Lista de Estados</h1>
+  Busca: <input type="search" ng-model="busca" />
+  <ul>
+      <li ng-repeat="state in lista.estados | filter:{ nome: busca }">
+          <strong>{{ state.sigla }}</strong> {{ state.nome }} <button ng-click="remover($index)">Remover</button>
+      </li>
+  </ul>
+  <div>
+      Total: <strong>{{ lista.estados.length }}</strong>
+  </div>
+  <div>
+      Nome: <input type="text" ng-model="vNome"/> <br/>
+      Sigla: <input type="text" ng-model="vSigla"/> <br/>
+      <button ng-click="adicionar()">Adicionar a Lista</button>
+  </div>
+
+  <script>
+      var app = angular.module('myApp', []);
+      app.controller('myCtrl', function($scope, $http) {
+          $http.get('brazil_cities_states.json').success(function(response) {
+              $scope.lista = response;
+          });
+
+          $scope.adicionar = function(){
+              $scope.lista.estados.push({
+                  nome: $scope.vNome,
+                  sigla: $scope.vSigla
+              });
+
+              $scope.vNome = "";
+              $scope.vSigla = "";
+          };
+
+          $scope.remover = function(index){
+              $scope.lista.estados.splice(index, 1);
+          };
+      });
+
+  </script>
+  </body>
+</html>

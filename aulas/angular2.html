@@ -1,0 +1,21 @@
+<!doctype html>
+<html ng-app="myApp">
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
+  </head>
+  <body ng-controller="myCtrl">
+
+  <input type="checkbox" ng-model="checado"/> Hide!
+
+  <div ng-hide="checado">
+      Olá !
+  </div>
+
+  <script>
+      var app = angular.module('myApp', []);
+      app.controller('myCtrl', function($scope) {
+          $scope.checado = true;
+      });
+  </script>
+  </body>
+</html>

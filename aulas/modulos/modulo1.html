@@ -1,0 +1,26 @@
+<!doctype html>
+<html ng-app="MeuModulo">
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
+  </head>
+
+  <body>
+  <div ng-controller="CtrlModulo">
+    Meu Nome é: {{ nome }}
+  </div>
+
+  <div ng-controller="CtrlModulo2">
+      Meu Nome é: {{ nome }}
+  </div>
+
+  <script>
+      angular.module('MeuModulo', [])
+              .controller('CtrlModulo', function($scope){
+                  $scope.nome = 'Adriano';
+              })
+              .controller('CtrlModulo2', function($scope){
+                  $scope.nome = 'Reinaldo';
+              });
+  </script>
+  </body>
+</html>
